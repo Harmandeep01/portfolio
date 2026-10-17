@@ -37,12 +37,19 @@ export default function Hero() {
               <h1 className="font-display font-extrabold text-[2.75rem] xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight uppercase leading-[0.92]">
                 <span className="block text-y2k-paleSilver whitespace-nowrap">HARMAN</span>
                 <span className="block text-y2k-pink text-glow-pink whitespace-nowrap">DEEP</span>
+                <span className="sr-only">Harmandeep - AI Engineer | Autonomous Agents, RAG Pipelines & LLM Architecture</span>
               </h1>
+            </div>
+
+            {/* Semantic SEO & Screen-Reader Crawler Dossier */}
+            <div className="sr-only">
+              <h2>Harmandeep - AI Engineer Portfolio, LinkedIn & Projects</h2>
+              <p>Harmandeep is an AI Engineer, Entry-Level / Fresher AI Engineer, and Agentic Systems Architect specializing in autonomous agent workflows, production RAG pipelines, FastAPI streaming, and LLM orchestration. Connect with Harmandeep on LinkedIn (harmandeep01) and GitHub (Harmandeep01).</p>
             </div>
 
             {/* AI Engineer Tagline (Fresher AI Engineer: Agents, RAG, MCP, LLMs) */}
             <p className="text-base sm:text-xl text-y2k-silver max-w-xl font-normal leading-relaxed break-words">
-              Architecting <span className="text-y2k-paleSilver font-semibold">autonomous agentic systems</span>, 
+              AI Engineer architecting <span className="text-y2k-paleSilver font-semibold">autonomous agentic systems</span>, 
               evaluating precision <span className="text-y2k-paleSilver font-semibold">RAG pipelines</span>, and orchestrating 
               deterministic LLM tool-calling architectures.
             </p>

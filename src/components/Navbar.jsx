@@ -150,7 +150,7 @@ export default function Navbar({ crtEnabled, setCrtEnabled, themeMode, setThemeM
           <a
             href="https://www.linkedin.com/in/harmandeep01/"
             target="_blank"
-            rel="noopener noreferrer"
+            rel="noopener noreferrer me"
             className="px-2.5 py-1 font-mono text-[11px] uppercase tracking-wider text-y2k-paleSilver hover:text-y2k-pink border border-y2k-border hover:border-y2k-pink transition-all flex items-center gap-1"
           >
             LinkedIn
@@ -160,7 +160,7 @@ export default function Navbar({ crtEnabled, setCrtEnabled, themeMode, setThemeM
           <a
             href="https://github.com/Harmandeep01"
             target="_blank"
-            rel="noopener noreferrer"
+            rel="noopener noreferrer me"
             className="px-2.5 py-1 font-mono text-[11px] uppercase tracking-wider text-y2k-paleSilver hover:text-y2k-pink border border-y2k-border hover:border-y2k-pink transition-all flex items-center gap-1"
           >
             GitHub
@@ -256,7 +256,7 @@ export default function Navbar({ crtEnabled, setCrtEnabled, themeMode, setThemeM
             <a
               href="https://www.linkedin.com/in/harmandeep01/"
               target="_blank"
-              rel="noopener noreferrer"
+              rel="noopener noreferrer me"
               className="flex-1 text-center py-2 text-xs font-mono border border-y2k-border text-y2k-silver hover:border-y2k-pink hover:text-y2k-pink"
             >
               LinkedIn ↗
@@ -264,7 +264,7 @@ export default function Navbar({ crtEnabled, setCrtEnabled, themeMode, setThemeM
             <a
               href="https://github.com/Harmandeep01"
               target="_blank"
-              rel="noopener noreferrer"
+              rel="noopener noreferrer me"
               className="flex-1 text-center py-2 text-xs font-mono border border-y2k-border text-y2k-silver hover:border-y2k-pink hover:text-y2k-pink"
             >
               GitHub ↗

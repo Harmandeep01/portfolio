@@ -131,7 +131,7 @@ export default function Contact() {
               <a
                 href="https://www.linkedin.com/in/harmandeep01/"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noopener noreferrer me"
                 className="w-full py-2 border border-y2k-border hover:border-y2k-pink hover:text-y2k-pink text-y2k-silver text-center font-mono text-xs uppercase transition-colors flex items-center justify-center gap-1.5"
               >
                 <span>Open LinkedIn</span>
@@ -164,7 +164,7 @@ export default function Contact() {
               <a
                 href="https://github.com/Harmandeep01"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noopener noreferrer me"
                 className="w-full py-2 border border-y2k-border hover:border-y2k-pink hover:text-y2k-pink text-y2k-silver text-center font-mono text-xs uppercase transition-colors flex items-center justify-center gap-1.5"
               >
                 <span>View Repositories</span>
