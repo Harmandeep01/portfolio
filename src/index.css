@@ -1,0 +1,337 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* CSS Variables for Dynamic Agency Theming */
+:root {
+  --color-bg: 18, 19, 18; /* #121312 Stealth Obsidian */
+  --color-surface: 26, 27, 26; /* #1A1B1A */
+  --color-card: 30, 31, 30; /* #1E1F1E */
+  --color-border: 44, 45, 44; /* #2C2D2C */
+  --color-pink: 243, 135, 161; /* #F387A1 Y2K Neon Pink */
+  --color-light-pink: 247, 191, 203; /* #F7BFCB */
+  --color-silver: 180, 182, 180; /* #B4B6B4 */
+  --color-pale-silver: 229, 229, 229; /* #E5E5E5 */
+  --color-text-main: 255, 255, 255;
+  color-scheme: dark;
+}
+
+html.theme-recon,
+body.theme-recon {
+  --color-bg: 247, 246, 248; /* #F7F6F8 Clean Y2K Light Pearl */
+  --color-surface: 242, 239, 244; /* #F2EFF4 Crisp Subtle Silver Pearl Inner Elements */
+  --color-card: 255, 255, 255; /* #FFFFFF Crisp Pure White Card */
+  --color-border: 218, 212, 220; /* #DAD4DC Metallic Line */
+  --color-pink: 209, 36, 84; /* #D12454 High-Contrast Vibrant Y2K Pink */
+  --color-light-pink: 168, 20, 61; /* #A8143D Deep Ruby */
+  --color-silver: 75, 72, 78; /* #4B484E High-Contrast Secondary Text */
+  --color-pale-silver: 18, 18, 20; /* #121214 Jet Carbon Primary Text */
+  --color-text-main: 15, 15, 18; /* #0F0F12 */
+  color-scheme: light;
+}
+
+@layer base {
+  body {
+    background-color: rgb(var(--color-bg));
+    color: rgb(var(--color-pale-silver));
+    font-family: 'Space Grotesk', -apple-system, sans-serif;
+    letter-spacing: -0.015em;
+    overflow-x: hidden;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  /* Comprehensive Light Mode Contrast Enforcement */
+  html.theme-recon body {
+    background-color: #F7F6F8 !important;
+    color: #121214 !important;
+  }
+
+  html.theme-recon .text-white,
+  html.theme-recon .text-white\/60,
+  html.theme-recon .text-white\/70,
+  html.theme-recon .text-white\/80,
+  html.theme-recon .text-white\/90 {
+    color: #121214 !important;
+  }
+
+  html.theme-recon strong {
+    color: #121214 !important;
+    font-weight: 700;
+  }
+
+  /* All Card Variants in Light Mode Must Be Solid Crisp White */
+  html.theme-recon .bg-y2k-card,
+  html.theme-recon .bg-y2k-card\/50,
+  html.theme-recon .bg-y2k-card\/60,
+  html.theme-recon .bg-y2k-card\/70,
+  html.theme-recon .bg-y2k-card\/80,
+  html.theme-recon .bg-y2k-card\/90,
+  html.theme-recon .bg-y2k-card\/95,
+  html.theme-recon .bg-\[\#0f100f\],
+  html.theme-recon .bg-\[\#121312\],
+  html.theme-recon .bg-\[\#181918\],
+  html.theme-recon .bg-\[\#1E1F1E\] {
+    background-color: #FFFFFF !important;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.05);
+  }
+
+  html.theme-recon .bg-y2k-bg {
+    background-color: #F7F6F8 !important;
+  }
+
+  /* Inner elements and pills in Light Mode: clean light pearl / white, never muddy grey */
+  html.theme-recon .bg-y2k-surface,
+  html.theme-recon .bg-y2k-surface\/25,
+  html.theme-recon .bg-y2k-surface\/40,
+  html.theme-recon .bg-y2k-surface\/50,
+  html.theme-recon .bg-y2k-surface\/60,
+  html.theme-recon .bg-y2k-surface\/80 {
+    background-color: #F2EFF4 !important;
+  }
+
+  html.theme-recon .border-y2k-border {
+    border-color: #DAD4DC !important;
+  }
+
+  html.theme-recon .text-y2k-silver {
+    color: #4B484E !important;
+  }
+
+  html.theme-recon .text-y2k-paleSilver {
+    color: #121214 !important;
+  }
+
+  html.theme-recon .text-y2k-lightPink {
+    color: #A8143D !important;
+  }
+
+  /* Guarantee High Contrast for Pink Primary Buttons in Light Mode */
+  html.theme-recon .bg-y2k-pink {
+    background-color: #D12454 !important;
+    color: #FFFFFF !important;
+  }
+  html.theme-recon .bg-y2k-pink * {
+    color: #FFFFFF !important;
+  }
+
+  /* Form Inputs and Interactive Contrast */
+  html.theme-recon input,
+  html.theme-recon textarea {
+    color: #121214 !important;
+  }
+  html.theme-recon input::placeholder,
+  html.theme-recon textarea::placeholder {
+    color: #75707A !important;
+  }
+
+  /* Safe Hover Contrast for Light Mode */
+  html.theme-recon .hover\:text-white:hover {
+    color: #D12454 !important;
+  }
+
+  /* Decrypted Frequency Trigger Buttons in Light Mode */
+  html.theme-recon button[title="Click to decrypt frequency"] {
+    background-color: #FFFFFF !important;
+    border-color: #DAD4DC !important;
+    color: #121214 !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  }
+  html.theme-recon button[title="Click to decrypt frequency"]:hover {
+    border-color: #D12454 !important;
+    color: #D12454 !important;
+  }
+
+  /* All-Seeing Eye Emblem Box in Light Mode */
+  html.theme-recon #providence .aspect-square {
+    background-color: #FFFFFF !important;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.05);
+  }
+
+  /* Classified redaction box in Light Mode */
+  html.theme-recon .redacted {
+    background-color: #D8D2DA !important;
+    color: transparent !important;
+  }
+  html.theme-recon .redacted:hover {
+    background-color: transparent !important;
+    color: #D12454 !important;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: rgb(var(--color-bg));
+}
+::-webkit-scrollbar-thumb {
+  background: rgb(var(--color-border));
+  border-radius: 0px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(var(--color-pink));
+}
+
+/* CRT Scanline Filter */
+.crt-effect {
+  background: linear-gradient(
+    rgba(18, 19, 18, 0) 50%, 
+    rgba(0, 0, 0, 0.45) 50%
+  ), linear-gradient(
+    90deg,
+    rgba(255, 0, 0, 0.03),
+    rgba(0, 255, 0, 0.01),
+    rgba(0, 0, 255, 0.03)
+  );
+  background-size: 100% 3px, 6px 100%;
+  pointer-events: none;
+}
+
+/* Covert Redaction Bar (Agency marker style) */
+.redacted {
+  background-color: currentColor;
+  color: transparent;
+  user-select: none;
+  cursor: help;
+  transition: all 0.2s ease;
+  padding: 0 4px;
+}
+.redacted:hover {
+  background-color: transparent;
+  color: rgb(var(--color-pink));
+}
+
+/* Subtle glowing cyber effects */
+.glow-pink {
+  box-shadow: 0 0 25px -4px rgba(243, 135, 161, 0.28);
+}
+
+.text-glow-pink {
+  text-shadow: 0 0 16px rgba(243, 135, 161, 0.55);
+}
+
+.y2k-panel {
+  background: rgb(var(--color-card));
+  border: 1px solid rgb(var(--color-border));
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.y2k-panel:hover {
+  border-color: rgb(var(--color-pink));
+}
+
+/* ========================================================
+   THE EYE OF PROVIDENCE: CYBERNETIC / MATRIX / LUCID / LSD
+   ======================================================== */
+
+@keyframes eyeFloatLevitate {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-9px);
+  }
+}
+
+@keyframes eyePupilDilate {
+  0%, 100% {
+    transform: scale(0.92);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+}
+
+@keyframes lucidRaysPulse {
+  0%, 100% {
+    opacity: 0.35;
+    stroke-width: 0.65;
+  }
+  50% {
+    opacity: 0.95;
+    stroke-width: 1.35;
+  }
+}
+
+@keyframes shockwaveRipple {
+  0% {
+    r: 12;
+    opacity: 0.85;
+  }
+  100% {
+    r: 88;
+    opacity: 0;
+  }
+}
+
+@keyframes matrixCircuitPulse {
+  0% {
+    stroke-dashoffset: 60;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes cyberReticleScan {
+  0% {
+    transform: translateY(-24px);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.7;
+  }
+  80% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(24px);
+    opacity: 0;
+  }
+}
+
+@keyframes sacredSpinCW {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes sacredSpinCCW {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+.anim-eye-float {
+  animation: eyeFloatLevitate 4.5s ease-in-out infinite;
+}
+
+.anim-rays-pulse {
+  animation: lucidRaysPulse 3.2s ease-in-out infinite;
+}
+
+.anim-matrix-circuit {
+  stroke-dasharray: 6 8;
+  animation: matrixCircuitPulse 2.4s linear infinite;
+}
+
+.anim-reticle-scan {
+  animation: cyberReticleScan 3s ease-in-out infinite;
+}
+
+.anim-sacred-spin {
+  transform-origin: 150px 85px;
+  animation: sacredSpinCW 48s linear infinite;
+}
+
+.anim-sacred-spin-reverse {
+  transform-origin: 150px 85px;
+  animation: sacredSpinCCW 32s linear infinite;
+}
