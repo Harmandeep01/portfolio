@@ -47,7 +47,15 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 ```bash
 npm run build
 ```
-Creates an optimized static bundle in `./dist` ready for instant deployment to Vercel, Netlify, or GitHub Pages.
+Creates an optimized static bundle in `./dist`.
+
+### Deployment & CI/CD
+Automated continuous integration and deployment via GitHub Actions on every push to `main`, publishing live to [Cloudflare Pages](https://harmandeep-portfolio.pages.dev).
+
+```bash
+npm run deploy
+```
+Deploys directly to Cloudflare Pages via Wrangler CLI.
 
 ### Preview Build
 ```bash
