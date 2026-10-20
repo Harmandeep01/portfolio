@@ -1,5 +1,14 @@
 import React, { useEffect, useRef, useState } from 'react';
 
+// Helper to determine if the client is a mobile device
+const isMobileDevice = () => {
+  if (typeof window === 'undefined') return false;
+  const isSmallScreen = window.innerWidth < 768;
+  const isTouchPrimary = window.matchMedia && window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+  const isMobileUA = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  return isSmallScreen || isTouchPrimary || isMobileUA;
+};
+
 export default function ConsciousnessEye({ className = "" }) {
   const containerRef = useRef(null);
   const [pupilPos, setPupilPos] = useState({ x: 0, y: 0 });
@@ -12,12 +21,18 @@ export default function ConsciousnessEye({ className = "" }) {
     let isMounted = true;
 
     const handleMouseMove = (e) => {
+      // Keep eye non-mouse-sensing on mobile devices (fixed in center)
+      if (isMobileDevice()) return;
       if (!containerRef.current) return;
       if (animationFrameId) return;
 
       animationFrameId = requestAnimationFrame(() => {
         animationFrameId = null;
         if (!containerRef.current || !isMounted) return;
+        if (isMobileDevice()) {
+          setPupilPos({ x: 0, y: 0 });
+          return;
+        }
 
         const rect = containerRef.current.getBoundingClientRect();
         const centerX = rect.left + rect.width / 2;
@@ -38,7 +53,14 @@ export default function ConsciousnessEye({ className = "" }) {
       });
     };
 
+    const handleResize = () => {
+      if (isMobileDevice()) {
+        setPupilPos({ x: 0, y: 0 });
+      }
+    };
+
     window.addEventListener('mousemove', handleMouseMove, { passive: true });
+    window.addEventListener('resize', handleResize);
 
     // Periodic conscious blink with proper random intervals and cleanup
     const scheduleNextBlink = () => {
@@ -59,6 +81,7 @@ export default function ConsciousnessEye({ className = "" }) {
     return () => {
       isMounted = false;
       window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('resize', handleResize);
       if (animationFrameId) cancelAnimationFrame(animationFrameId);
       if (blinkTimer) clearTimeout(blinkTimer);
       if (blinkCloseTimer) clearTimeout(blinkCloseTimer);

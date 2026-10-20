@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, Send, Copy, Check, ExternalLink, ShieldCheck } from 'lucide-react';
+import { Mail, Phone, Send, Copy, Check, ExternalLink, ShieldCheck } from 'lucide-react';
 import HashTrigger from './HashTrigger';
 
 // Clean inline SVG for LinkedIn & GitHub to guarantee zero dependency issues
@@ -16,18 +16,20 @@ const GitHubIcon = ({ className = "w-4 h-4" }) => (
 );
 
 export default function Contact() {
-  const [copied, setCopied] = useState(false);
+  const [copiedEmail, setCopiedEmail] = useState(false);
+  const [copiedPhone, setCopiedPhone] = useState(false);
   const email = "sharmandeep954@gmail.com";
+  const phone = "+91 6283623097";
 
-  const handleCopy = async () => {
+  const copyToClipboard = async (text, setCopiedState) => {
     try {
       if (navigator?.clipboard?.writeText) {
-        await navigator.clipboard.writeText(email);
-        setCopied(true);
-        setTimeout(() => setCopied(false), 2000);
+        await navigator.clipboard.writeText(text);
+        setCopiedState(true);
+        setTimeout(() => setCopiedState(false), 2000);
       } else {
         const textArea = document.createElement("textarea");
-        textArea.value = email;
+        textArea.value = text;
         textArea.style.position = "fixed";
         textArea.style.opacity = "0";
         document.body.appendChild(textArea);
@@ -35,11 +37,11 @@ export default function Contact() {
         textArea.select();
         document.execCommand("copy");
         document.body.removeChild(textArea);
-        setCopied(true);
-        setTimeout(() => setCopied(false), 2000);
+        setCopiedState(true);
+        setTimeout(() => setCopiedState(false), 2000);
       }
     } catch {
-      setCopied(false);
+      setCopiedState(false);
     }
   };
 
@@ -67,7 +69,7 @@ export default function Contact() {
         </div>
 
         {/* Transmission Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           
           {/* Email Channel */}
           <div className="p-6 bg-y2k-card border border-y2k-border hover:border-y2k-pink transition-all duration-200 flex flex-col justify-between">
@@ -96,13 +98,51 @@ export default function Contact() {
                 <span>Send Mail</span>
               </a>
               <button
-                onClick={handleCopy}
+                onClick={() => copyToClipboard(email, setCopiedEmail)}
                 type="button"
-                aria-label={copied ? "Email copied to clipboard" : "Copy email address to clipboard"}
+                aria-label={copiedEmail ? "Email copied to clipboard" : "Copy email address to clipboard"}
                 className="p-2 border border-y2k-border hover:border-y2k-pink text-y2k-silver hover:text-y2k-pink transition-colors"
                 title="Copy to clipboard"
               >
-                {copied ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
+                {copiedEmail ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
+              </button>
+            </div>
+          </div>
+
+          {/* Phone Channel */}
+          <div className="p-6 bg-y2k-card border border-y2k-border hover:border-y2k-pink transition-all duration-200 flex flex-col justify-between">
+            <div>
+              <div className="flex items-center justify-between pb-3 mb-3 border-b border-y2k-border">
+                <span className="font-mono text-xs text-y2k-silver uppercase flex items-center gap-1.5">
+                  <Phone className="w-3.5 h-3.5 text-y2k-pink" />
+                  Voice Line
+                </span>
+                <span className="text-emerald-400 font-mono text-[10px]">ACTIVE</span>
+              </div>
+              <h3 className="font-display font-bold text-lg text-y2k-paleSilver mb-2">
+                Telephony Line
+              </h3>
+              <p className="font-mono text-xs text-y2k-lightPink break-all mb-4">
+                {phone}
+              </p>
+            </div>
+
+            <div className="flex items-center gap-2 pt-4 border-t border-y2k-border">
+              <a
+                href={`tel:${phone.replace(/\s+/g, '')}`}
+                className="flex-1 py-2 bg-y2k-pink text-y2k-bg text-center font-mono font-bold text-xs uppercase hover:bg-y2k-lightPink transition-colors flex items-center justify-center gap-1"
+              >
+                <Phone className="w-3 h-3" />
+                <span>Call Now</span>
+              </a>
+              <button
+                onClick={() => copyToClipboard(phone, setCopiedPhone)}
+                type="button"
+                aria-label={copiedPhone ? "Phone number copied to clipboard" : "Copy phone number to clipboard"}
+                className="p-2 border border-y2k-border hover:border-y2k-pink text-y2k-silver hover:text-y2k-pink transition-colors"
+                title="Copy to clipboard"
+              >
+                {copiedPhone ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
               </button>
             </div>
           </div>

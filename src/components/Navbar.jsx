@@ -170,6 +170,23 @@ export default function Navbar({ crtEnabled, setCrtEnabled, themeMode, setThemeM
 
         {/* Mobile Hamburger / Quick Switch */}
         <div className="flex sm:hidden items-center gap-2">
+          {/* Mobile Quick CRT Toggle */}
+          <button
+            onClick={() => setCrtEnabled(!crtEnabled)}
+            type="button"
+            aria-label={`Toggle CRT scanline filter. Currently ${crtEnabled ? 'enabled' : 'disabled'}`}
+            aria-pressed={crtEnabled}
+            className={`px-1.5 py-1 border text-[9px] font-mono flex items-center gap-1 transition-colors cursor-pointer ${
+              crtEnabled
+                ? 'border-y2k-pink text-y2k-pink bg-y2k-pink/10 shadow-[0_0_8px_rgba(243,135,161,0.2)]'
+                : 'border-y2k-border text-y2k-silver hover:border-y2k-silver'
+            }`}
+            title="Toggle Y2K CRT Scanline filter"
+          >
+            <Monitor className="w-2.5 h-2.5" />
+            <span>CRT {crtEnabled ? 'ON' : 'OFF'}</span>
+          </button>
+
           <div className="flex border border-y2k-border text-[9px] font-mono">
             <button
               onClick={() => handleThemeSelect('blackops')}
@@ -237,6 +254,28 @@ export default function Navbar({ crtEnabled, setCrtEnabled, themeMode, setThemeM
                 LIGHT
               </button>
             </div>
+          </div>
+
+          {/* Mobile CRT Filter Toggle */}
+          <div className="py-2 border-b border-y2k-border/60 flex items-center justify-between">
+            <span className="font-mono text-xs text-y2k-silver flex items-center gap-1.5">
+              <Monitor className="w-3.5 h-3.5 text-y2k-pink" />
+              <span>CRT FILTER:</span>
+            </span>
+            <button
+              type="button"
+              onClick={() => setCrtEnabled(!crtEnabled)}
+              aria-label={`Toggle CRT scanline filter. Currently ${crtEnabled ? 'enabled' : 'disabled'}`}
+              aria-pressed={crtEnabled}
+              className={`px-3 py-1 font-mono text-xs border flex items-center gap-1.5 transition-colors cursor-pointer ${
+                crtEnabled
+                  ? 'border-y2k-pink text-y2k-pink bg-y2k-pink/10 shadow-[0_0_10px_rgba(243,135,161,0.2)] font-bold'
+                  : 'border-y2k-border text-y2k-silver hover:border-y2k-silver'
+              }`}
+            >
+              <Monitor className="w-3 h-3" />
+              <span>CRT {crtEnabled ? 'ON' : 'OFF'}</span>
+            </button>
           </div>
 
           <div className="flex flex-col space-y-3 font-mono text-sm uppercase tracking-wider">
